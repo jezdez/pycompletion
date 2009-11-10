@@ -1,0 +1,17 @@
+pycompletion
+============
+
+A lib to collect command line completion scripts of Python packages
+
+Installing
+----------
+
+To install this, point to the "complete" directory from your .bashrc:
+
+    . /path/to/pycompletion/complete
+
+Uninstalling
+------------
+
+Just remove the line from your .bashrc
+
