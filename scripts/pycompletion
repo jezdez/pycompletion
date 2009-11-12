@@ -1,14 +1,30 @@
 #!/bin/sh
 # source all completions found in the bash or zsh directory
 
-if [ -n "$BASH" ] ; then
-    src_dir="`dirname ${BASH_SOURCE:-$0}`/bash"
-elif [ -n "$ZSH_VERSION" ] ; then
-    src_dir="`dirname ${BASH_SOURCE:-$0}`/zsh"
-else
-    exit
+function pycompletion_scripts () {
+    python -c 'import os, pycompletion; print os.path.abspath(os.path.dirname(pycompletion.__file__))'
+}
+
+if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
+  # first try the python site-packages dir
+  PYCOMPLETION_SRC_ROOT=`pycompletion_scripts`
+  if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
+    # then somewhere else (e.g. /opt/local/etc/pycompletion) FIXME
+    PYCOMPLETION_SRC_ROOT=`dirname ${BASH_SOURCE:-$0}`
+  fi
+  export PYCOMPLETION_SRC_ROOT
 fi
 
-for script in $src_dir/*; do
-    source $script 2>/dev/null
-done
+if [ -n "$PYCOMPLETION_SRC_ROOT" ] ; then
+  if [ -n "$BASH" ] ; then
+      src_dir="$PYCOMPLETION_SRC_ROOT/bash"
+  elif [ -n "$ZSH_VERSION" ] ; then
+      src_dir="$PYCOMPLETION_SRC_ROOT/zsh"
+  else
+      exit
+  fi
+
+  for script in $src_dir/*; do
+      source $script 2>/dev/null
+  done
+fi
