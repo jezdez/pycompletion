@@ -8,10 +8,10 @@ function pycompletion_scripts () {
 if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
   # first try the python site-packages dir
   PYCOMPLETION_SRC_ROOT=`pycompletion_scripts`
-  if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
-    # then somewhere else (e.g. /opt/local/etc/pycompletion) FIXME
-    PYCOMPLETION_SRC_ROOT=`dirname ${BASH_SOURCE:-$0}`
-  fi
+  # if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
+  #   # then somewhere else (e.g. /opt/local/etc/pycompletion) FIXME
+  #   PYCOMPLETION_SRC_ROOT=`dirname ${BASH_SOURCE:-$0}`
+  # fi
   export PYCOMPLETION_SRC_ROOT
 fi
 
