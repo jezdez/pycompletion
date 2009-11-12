@@ -11,11 +11,11 @@ bash-completion 1.x (http://bash-completion.alioth.debian.org/)
 Installing
 ----------
 
-You can install pycompletion from the PyPI:
+You can install pycompletion from the PyPI::
 
     pip install pycompletion
 
-Then source the pycompletion script from your .bashrc:
+Then source the pycompletion script from your .bashrc::
 
     . `which pycompletion`
 
