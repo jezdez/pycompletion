@@ -1,2 +1,4 @@
+include README
+include LICENSE
 recursive-include pycompletion/bash *
 recursive-include pycompletion/zsh *
