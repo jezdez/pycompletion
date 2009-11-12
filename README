@@ -3,15 +3,19 @@ pycompletion
 
 A lib to collect command line completion scripts of Python packages
 
+Dependencies
+------------
+
+bash-completion 1.x (http://bash-completion.alioth.debian.org/)
+
 Installing
 ----------
 
-Source the pycompletion start script from your .bashrc:
+You can install pycompletion from the PyPI:
+
+    pip install pycompletion
+
+Then source the pycompletion script from your .bashrc:
 
     . `which pycompletion`
-
-Uninstalling
-------------
-
-Just remove the line from your .bashrc
 
