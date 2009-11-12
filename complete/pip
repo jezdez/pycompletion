@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -n "$BASH" ] ; then
     _pip_completion()
     {
@@ -11,7 +13,7 @@ elif [ -n "$ZSH_VERSION" ] ; then
       local words cword
       read -Ac words
       read -cn cword
-      reply=( $( COMP_WORDS="$words[*]" \ 
+      reply=( $( COMP_WORDS="$words[*]" \
                  COMP_CWORD=$(( cword-1 )) \
                  PIP_AUTO_COMPLETE=1 $words[1] ) )
     }
