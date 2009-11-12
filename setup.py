@@ -5,7 +5,7 @@ import pycompletion
 setup(
     name='pycompletion',
     version=pycompletion.__version__,
-    description='Enhancements to virtualenv',
+    description='A lib to collect command line completion scripts of Python packages',
     author='Arthur Koziel, Jannis Leidel',
     author_email='arthur@arthurkoziel.com, jannis@leidel.info',
     url='http://github.com/jezdez/pycompletion/',
