@@ -6,9 +6,9 @@ A lib to collect command line completion scripts of Python packages
 Installing
 ----------
 
-To install this, source the all.sh script from your .bashrc:
+Source the pycompletion.sh script from your .bashrc:
 
-    . /path/to/pycompletion/all.sh
+    . /path/to/pycompletion/pycompletion.sh
 
 Uninstalling
 ------------

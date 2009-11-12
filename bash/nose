@@ -1,0 +1,33 @@
+#!/bin/sh
+
+_nose()
+{
+    local cur
+
+    COMPREPLY=()
+    cur=`_get_cword`
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '-h --help -V --version -p --plugins \
+            -v --verbose --verbosity -q --quiet -c --config -w --where \
+            -m --match --testmatch --tests -l --debug --debug-log \
+            --logging-config --log-config -e --exclude -i --include \
+            -x --stop -P --no-path-adjustment --exe --noexe \
+            --traverse-namespace --first-package-wins --first-pkg-wins \
+            --1st-pkg-wins -a --attr -A --eval-attr -s --nocapture \
+            --nologcapture --logging-format --logging-datefmt \
+            --logging-datefmt --logging-filter --logging-clear-handlers \
+            --with-coverage --cover-package --cover-erase --cover-tests \
+            --cover-inclusive --cover-html --cover-html-dir --pdb \
+            --pdb-failures --no-deprecated --with-doctest --doctest-tests \
+            --doctest-extension --doctest-result-variable \
+            --doctest-fixtures --with-isolation  -d --detailed-errors \
+            --failure-detail --with-profile --profile-sort \
+            --profile-stats --profile-restrict --no-skip --with-id \
+            --id-file --failed --processes --process-timeout --with-xunit \
+            --xunit-file --all-modules --collect-only' -- "$cur" ) )
+    fi
+
+    return 0
+} &&
+complete -F _nose -o default nosetests

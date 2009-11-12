@@ -1,0 +1,15 @@
+#!/bin/sh
+
+_lanyon()
+{
+    local cur
+
+    COMPREPLY=()
+    cur=`_get_cword`
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '--version -h --help -l --logging-level \
+            -f --logging-file -p --port -s --serve' -- "$cur" ) )
+    fi
+} &&
+complete -F _lanyon -o default lanyon
