@@ -8,8 +8,8 @@ _lanyon()
     cur=`_get_cword`
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--version -h --help -l --logging-level \
-            -f --logging-file -p --port -s --serve' -- "$cur" ) )
+        COMPREPLY=( $( compgen -W '--version -h --help -l --logging-level= \
+            -f --logging-file= -p --port= -s --serve' -- "$cur" ) )
     fi
 } &&
 complete -F _lanyon -o default lanyon

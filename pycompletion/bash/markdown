@@ -25,8 +25,8 @@ _markdown()
 
     if [[ "$cur" == -* ]]; then
         COMPREPLY=( $( compgen -W \
-            '-h --help -f --file -e --encoding -q --quiet -v --verbose -s --safe \
-             -o --output-format --noisy -x --extension' -- "$cur" ) )
+            '-h --help -f --file= -e --encoding= -q --quiet -v --verbose -s --safe= \
+             -o --output-format= --noisy -x --extension=' -- "$cur" ) )
     fi
 
     return 0

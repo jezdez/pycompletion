@@ -20,9 +20,9 @@ _fabric()
 
     if [[ "$cur" == -* ]]; then
         COMPREPLY=( $( compgen -W '-h --help -V --version -l --list -d \
-            --display -r --reject-unknown-hosts -D --disable-known-hosts \
-            -u --user -p --password -H --hosts -R --roles -i -f --fabfile \
-            -w --warn-only -s --shell -c --config --hide --show' \
+            --display= -r --reject-unknown-hosts -D --disable-known-hosts \
+            -u --user= -p --password= -H --hosts= -R --roles= -i -f --fabfile= \
+            -w --warn-only -s --shell= -c --config= --hide= --show=' \
             -- "$cur" ) )
     else
         CUSTOM_TASKS=`fab -l 2> /dev/null | awk 'NR>2{ print $1 }'`
