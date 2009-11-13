@@ -2,7 +2,7 @@ pycompletion
 ============
 
 A lib to collect command line completion scripts of Python packages.
-The following completion scripts are included:
+The following completion scripts are included::
 
 - django (bash)
 - fabric (bash)
@@ -15,7 +15,7 @@ The following completion scripts are included:
 Dependencies
 ------------
 
-bash-completion 1.x (http://bash-completion.alioth.debian.org/)
+`bash-completion 1.1 <http://bash-completion.alioth.debian.org>`_
 
 Installing
 ----------
