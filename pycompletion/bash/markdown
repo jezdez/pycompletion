@@ -1,0 +1,34 @@
+#!/bin/sh
+
+_markdown()
+{
+    local cur prev split=false
+
+    COMPREPLY=()
+    cur=`_get_cword`
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    _split_longopt && split=true
+
+    case "$prev" in
+        -s|--safe)
+            COMPREPLY=( $( compgen -W 'remove replace escape' -- "$cur" ) )
+            return 0
+            ;;
+        -o|--output-format)
+            COMPREPLY=( $( compgen -W 'html html4 xhtml xhtml1' -- "$cur" ) )
+            return 0
+            ;;
+    esac
+
+    $split && return 0
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W \
+            '-h --help -f --file -e --encoding -q --quiet -v --verbose -s --safe \
+             -o --output-format --noisy -x --extension' -- "$cur" ) )
+    fi
+
+    return 0
+} &&
+complete -F _markdown -o default markdown
