@@ -9,7 +9,7 @@ setup(
     name='pycompletion',
     version=pycompletion.__version__,
     description='A lib to collect command line completion scripts of Python packages',
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Arthur Koziel, Jannis Leidel',
     author_email='arthur@arthurkoziel.com, jannis@leidel.info',
     url='http://github.com/jezdez/pycompletion/',

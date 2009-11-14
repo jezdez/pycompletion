@@ -7,6 +7,7 @@ The following completion scripts are included::
 - django (bash)
 - fabric (bash)
 - lanyon (bash)
+- markdown (bash)
 - nose (bash)
 - pip (bash, zsh)
 - pygments (bash)
