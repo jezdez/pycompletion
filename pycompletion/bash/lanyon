@@ -2,14 +2,32 @@
 
 _lanyon()
 {
-    local cur
+    local cur prev split=false
 
     COMPREPLY=()
     cur=`_get_cword`
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    _split_longopt && split=true
+
+    case "$prev" in
+        --logging-file)
+            _filedir
+            return 0
+            ;;
+        --logging-level)
+            COMPREPLY=( $( compgen -W \
+                'critical error warning info debug' -- "$cur" ) )
+
+    esac
+
+    $split && return 0
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--version -h --help -l --logging-level= \
-            -f --logging-file= -p --port= -s --serve' -- "$cur" ) )
+        OPTIONS=`lanyon -h | grep -o -e "-\{1,2\}[A-Za-z0-9_\-]\+=*"`
+        COMPREPLY=( $( compgen -W '$OPTIONS' -- "$cur" ) )
     fi
+
+    return 0
 } &&
-complete -F _lanyon -o default lanyon
+complete -F _lanyon lanyon
