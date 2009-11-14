@@ -1,0 +1,71 @@
+#!/bin/sh
+
+_rst2html()
+{
+    local cur prev split=false
+
+    COMPREPLY=()
+    cur=`_get_cword`
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+
+    _split_longopt && split=true
+
+    case "$prev" in
+        -r|--report|--halt|--exit-status)
+            COMPREPLY=( $( compgen -W 'info 1 warning 2 error 3 severe 4 none 5' -- "$cur" ) )
+            return 0
+            ;;
+        --input-encoding-error-handler)
+            COMPREPLY=( $( compgen -W 'strict ignore replace' -- "$cur" ) )
+            return 0
+            ;;
+        --output-encoding-error-handler)
+            COMPREPLY=( $( compgen -W 'strict ignore replace xmlcharrefreplace backslashreplace' -- "$cur" ) )
+            return 0
+            ;;
+        --initial-header-level)
+            COMPREPLY=( $( compgen -W '1 2 3 4 5 6' -- "$cur" ) )
+            return 0
+            ;;
+        --footnote-references)
+            COMPREPLY=( $( compgen -W 'superscript brackets ' -- "$cur" ) )
+            return 0
+            ;;
+        --attribution)
+            COMPREPLY=( $( compgen -W 'dash parentheses parens none' -- "$cur" ) )
+            return 0
+            ;;
+    esac
+
+    $split && return 0
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W \
+            '--title= --generator -g --no-generator --date -d --time -t \
+             --no-datestamp --source-link -s --source-url= --no-source-link \
+             --toc-entry-backlinks --toc-top-backlinks --no-toc-backlinks \
+             --footnote-backlinks --no-footnote-backlinks --section-numbering \
+             --no-section-numbering --strip-comments --leave-comments \
+             --strip-elements-with-class= --strip-class= --report= -r \
+             --verbose -v --quiet -q --halt= --strict --exit-status= --debug \
+             --no-debug --warnings= --traceback --no-traceback \
+             --input-encoding= -i --input-encoding-error-handler= \
+             --output-encoding= -o --output-encoding-error-handler= \
+             --error-encoding= -e --error-encoding-error-handler= --language= \
+             -l --record-dependencies= --config= --version -V --help -h \
+             --pep-references --pep-base-url= --pep-file-url-template= \
+             --rfc-references --rfc-base-url= --tab-width= \
+             --trim-footnote-reference-space --leave-footnote-reference-space \
+             --no-file-insertion --file-insertion-enabled --no-raw \
+             --raw-enabled --no-doc-title --no-doc-info --section-subtitles \
+             --no-section-subtitles --template= --stylesheet= --stylesheet-path= \
+             --embed-stylesheet --link-stylesheet --initial-header-level= \
+             --field-name-limit= --option-limit= --footnote-references= \
+             --attribution= --compact-lists --no-compact-lists \
+             --compact-field-lists --no-compact-field-lists \
+             --no-xml-declaration --cloak-email-addresses' -- "$cur" ) )
+    fi
+
+    return 0
+} &&
+complete -F _rst2html -o default rst2html.py
