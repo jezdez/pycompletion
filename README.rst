@@ -4,14 +4,14 @@ pycompletion
 A lib to collect command line completion scripts of Python packages.
 The following completion scripts are included::
 
-- django (bash)
-- fabric (bash)
-- lanyon (bash)
-- markdown (bash)
-- nose (bash)
-- pip (bash, zsh)
-- pygments (bash)
-- virtualenv (bash)
+* django (bash)
+* fabric (bash)
+* lanyon (bash)
+* markdown (bash)
+* nose (bash)
+* pip (bash, zsh)
+* pygments (bash)
+* virtualenv (bash)
 
 Dependencies
 ------------
