@@ -2,7 +2,7 @@ pycompletion
 ============
 
 A lib to collect command line completion scripts of Python packages.
-The following completion scripts are included::
+The following completion scripts are included:
 
 * django (bash)
 * fabric (bash)
