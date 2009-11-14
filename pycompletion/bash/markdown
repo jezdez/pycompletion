@@ -24,9 +24,8 @@ _markdown()
     $split && return 0
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W \
-            '-h --help -f --file= -e --encoding= -q --quiet -v --verbose -s --safe= \
-             -o --output-format= --noisy -x --extension=' -- "$cur" ) )
+        OPTIONS=`markdown -h | grep -o -e "-\{1,2\}[A-Za-z0-9_\-]\+=*"`
+        COMPREPLY=( $( compgen -W '$OPTIONS' -- "$cur" ) )
     fi
 
     return 0
