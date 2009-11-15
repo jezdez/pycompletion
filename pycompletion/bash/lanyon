@@ -24,8 +24,9 @@ _lanyon()
     $split && return 0
 
     if [[ "$cur" == -* ]]; then
-        OPTIONS=`lanyon -h | grep -o -e "-\{1,2\}[A-Za-z0-9_\-]\+=*"`
-        COMPREPLY=( $( compgen -W '$OPTIONS' -- "$cur" ) )
+        COMPREPLY=( $( compgen -W \
+            '--version -h --help -l --logging-level= -f --logging-file= -p \
+             --port= -s --serve' -- "$cur" ) )
     fi
 
     return 0
