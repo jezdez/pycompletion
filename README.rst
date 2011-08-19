@@ -27,5 +27,5 @@ You can install pycompletion from the PyPI::
 
 Then source the pycompletion script from your .bashrc::
 
-    . `which pycompletion`
+    source `which pycompletion`
 
