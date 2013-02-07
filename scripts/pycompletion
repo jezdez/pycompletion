@@ -2,7 +2,7 @@
 # source all completions found in the bash or zsh directory
 
 function pycompletion_scripts () {
-    python -c 'import os, pycompletion; print os.path.abspath(os.path.dirname(pycompletion.__file__))'
+    python -c 'import os, pycompletion; print(os.path.abspath(os.path.dirname(pycompletion.__file__)))'
 }
 
 if [ ! -n "$PYCOMPLETION_SRC_ROOT" ] ; then
